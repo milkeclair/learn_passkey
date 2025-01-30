@@ -1,4 +1,4 @@
-class Users::Registrations::ChallengesController < ApplicationController
+class Registrations::ChallengesController < ApplicationController
   def create
     user = User.new.tap { it.build_profile(registration_params) }
 
@@ -20,7 +20,7 @@ class Users::Registrations::ChallengesController < ApplicationController
       profile: user.profile,
       confirm_code:
     }
-    view = render_to_string(partial: "users/registrations/confirm_code")
+    view = render_to_string(partial: "registrations/confirm_code")
     render json: { details: challenge_details, view:, email: registration_params[:email] }
   end
 

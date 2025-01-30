@@ -1,4 +1,4 @@
-<%= form_with scope: :registration, url: users_registration_path,
+<%= form_with scope: :registration, url: registration_path,
   data: { action: "submit->webauthn-register#webauthnStep", webauthn_register_target: "form" } do |f|
 %>
   <%= f.label :webauthn %>

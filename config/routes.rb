@@ -10,14 +10,12 @@ Rails.application.routes.draw do
   # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
 
   # Defines the root path route ("/")
-  root to: redirect("users/registration/new")
+  root to: redirect("registration/new")
 
   resources :users, only: %i[show]
 
-  namespace :users do
-    resource :registration, only: %i[new create] do
-      resource :challenge, only: %i[create], module: :registrations
-      resource :confirmation_email, only: %i[create], module: :registrations
-    end
+  resource :registration, only: %i[new create] do
+    resource :challenge, only: %i[create]
+    resource :confirmation_email, only: %i[create]
   end
 end

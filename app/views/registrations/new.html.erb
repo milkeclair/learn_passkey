@@ -1,5 +1,5 @@
 <%= tag.div data: { controller: "webauthn-register" } do %>
-  <%= form_with scope: :registration, url: users_registration_challenge_path,
+  <%= form_with scope: :registration, url: registration_challenge_path,
     data: { action: "submit->webauthn-register#challengeStep", webauthn_register_target: "form" } do |f|
   %>
     <%= f.label :email %>
