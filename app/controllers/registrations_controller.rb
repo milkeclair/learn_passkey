@@ -1,4 +1,6 @@
 class RegistrationsController < ApplicationController
+  before_action :reject_authenticated_access
+
   def new
   end
 
@@ -19,8 +21,8 @@ class RegistrationsController < ApplicationController
 
       if user.valid? && user.profile.valid? && user.credentials.first.valid? && session.dig(:current_registration, "confirmed")
         user.save!
+        reset_session
         session[:user_id] = user.id
-        session[:current_registration] = nil
         render json: { redirect: user_path(user) }
       else
         render json: { error: "エラーが発生しました" }, status: :unprocessable_content

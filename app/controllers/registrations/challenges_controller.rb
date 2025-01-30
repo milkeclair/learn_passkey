@@ -1,4 +1,6 @@
 class Registrations::ChallengesController < ApplicationController
+  before_action :reject_authenticated_access
+
   def create
     user = User.new.tap { it.build_profile(registration_params) }
 

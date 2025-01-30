@@ -1,4 +1,6 @@
 class Registrations::ConfirmationEmailsController < ApplicationController
+  before_action :reject_authenticated_access
+
   def create
     p "confirm_code: #{session.dig(:current_registration, "confirm_code")}"
 

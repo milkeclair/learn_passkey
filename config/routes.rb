@@ -19,7 +19,7 @@ Rails.application.routes.draw do
     resource :confirmation_email, only: %i[create], module: :registrations
   end
 
-  resource :session, only: %i[new create destroy] do
+  resource :sessions, only: %i[new create destroy] do
     resource :challenge, only: %i[create], module: :sessions
   end
 end

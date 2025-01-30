@@ -1,0 +1,10 @@
+<%= tag.div data: {
+  controller: "webauthn-session", webauthn_session_challenge_path_value: sessions_challenge_path
+} do %>
+  <%= form_with url: sessions_path,
+    data: { webauthn_session_target: "form", action: "submit->webauthn-session#submit" } do |f|
+  %>
+    <%= f.label :webauthn %>
+    <%= f.submit "login", data: { webauthn_session_target: "submit" } %>
+  <% end %>
+<% end %>

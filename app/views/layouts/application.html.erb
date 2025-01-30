@@ -27,6 +27,8 @@
       <%= link_to "home", root_path %>
       <%= link_to "me", user_path(@current_user) if @current_user %>
       <%= link_to "sign up", new_registration_path unless @current_user %>
+      <%= link_to "sign in", new_sessions_path unless @current_user %>
+      <%= button_to "sign out", sessions_path, method: :delete if @current_user %>
     <% end %>
     <%= yield %>
   </body>
