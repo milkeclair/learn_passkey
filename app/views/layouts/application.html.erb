@@ -23,6 +23,11 @@
   </head>
 
   <body>
+    <%= tag.header do %>
+      <%= link_to "home", root_path %>
+      <%= link_to "me", user_path(@current_user) if @current_user %>
+      <%= link_to "sign up", new_registration_path unless @current_user %>
+    <% end %>
     <%= yield %>
   </body>
 </html>
