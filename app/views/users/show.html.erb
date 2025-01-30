@@ -1,1 +1,9 @@
-<%= @user.profile.email %>
+<%= tag.div @user.profile.name %>
+<%= tag.div @user.profile.email %>
+<br>
+<%= tag.div "--- credentials ---" %>
+<br>
+<% @user.credentials.each do |credential| %>
+  <%= tag.div credential.external_id %>
+  <%= tag.div credential.sign_count %>
+<% end %>
