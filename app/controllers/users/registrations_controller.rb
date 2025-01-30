@@ -19,8 +19,9 @@ class Users::RegistrationsController < ApplicationController
 
       if user.valid? && user.profile.valid? && user.credentials.first.valid? && session.dig(:current_registration, "confirmed")
         user.save!
+        session[:user_id] = user.id
         session[:current_registration] = nil
-        redirect_to root_path, notice: "登録が完了しました"
+        render json: { redirect: user_path(user) }
       else
         render json: { error: "エラーが発生しました" }, status: :unprocessable_content
       end

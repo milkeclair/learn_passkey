@@ -48,7 +48,9 @@ export default class extends Controller {
     event.preventDefault();
 
     const response = await this.#createCredential(this.#challengeResult);
-    if (response.error) {
+    if (!response.error) {
+      window.location.href = response.redirect;
+    } else {
       this.#showError(response.error);
     }
   };
