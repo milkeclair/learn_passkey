@@ -8,7 +8,8 @@ class Registrations::ChallengesController < ApplicationController
       user: { id: user.webauthn_id, name: user.profile.name },
       authenticator_selection: {
         # パスキーのみでログインできる
-        resident_key: "discouraged",
+        resident_key: "required",
+        require_resident_key: true,
         # 認証器での確認を必須にする
         user_verification: "required"
       }
