@@ -15,7 +15,11 @@ Rails.application.routes.draw do
   resources :users, only: %i[show]
 
   resource :registration, only: %i[new create] do
-    resource :challenge, only: %i[create]
-    resource :confirmation_email, only: %i[create]
+    resource :challenge, only: %i[create], module: :registrations
+    resource :confirmation_email, only: %i[create], module: :registrations
+  end
+
+  resource :session, only: %i[new create destroy] do
+    resource :challenge, only: %i[create], module: :sessions
   end
 end
