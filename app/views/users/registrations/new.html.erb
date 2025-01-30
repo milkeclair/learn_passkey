@@ -1,0 +1,15 @@
+<%= tag.div data: { controller: "webauthn-register" } do %>
+  <%= form_with scope: :registration, url: users_registrations_challenges_path,
+    data: { action: "submit->webauthn-register#challengeStep", webauthn_register_target: "form" } do |f|
+  %>
+    <%= f.label :email %>
+    <%= f.email_field :email, data: { webauthn_register_target: "email" } %>
+
+    <%= f.label :name %>
+    <%= f.text_field :name, data: { webauthn_register_target: "name" } %>
+
+    <%= f.submit "submit" %>
+  <% end %>
+
+  <%= tag.button "やり直す", data: { action: "click->webauthn-register#reset" } %>
+<% end %>

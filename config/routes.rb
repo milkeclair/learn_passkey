@@ -13,6 +13,9 @@ Rails.application.routes.draw do
   root to: redirect("users/registrations/new")
 
   namespace :users do
-    resources :registrations, only: %i[new create]
+    resource :registrations, only: %i[new create] do
+      resources :challenges, only: %i[create], module: :registrations
+      resources :confirmation_emails, only: %i[create], module: :registrations
+    end
   end
 end
