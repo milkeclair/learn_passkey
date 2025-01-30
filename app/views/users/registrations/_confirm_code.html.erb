@@ -1,4 +1,4 @@
-<%= form_with scope: :registration, url: users_registrations_confirmation_emails_path,
+<%= form_with scope: :registration, url: users_registration_confirmation_email_path,
   data: { action: "submit->webauthn-register#confirmEmailStep", webauthn_register_target: "form" } do |f|
 %>
   <%= f.label :confirm_code %>
